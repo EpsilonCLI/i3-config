@@ -1,0 +1,143 @@
+(defwindow bar
+    :monitor 0
+    :geometry (geometry
+                :x "0"
+                :y "0"
+                :width "100%"
+                :anchor "bottom center"
+                :height "60px")
+    :stacking "bg"
+    :windowtype "dock"
+    :exclusive true
+    :focusable "none"
+   (bar)
+)
+
+(defwindow top
+    :monitor 0
+    :geometry (geometry
+                :x "0%"
+                :y "0%"
+                :width "100%"
+                :anchor "top center"
+                :height "40px")
+    :stacking "bg"
+    :windowtype "dock"
+    :exclusive true
+    :focusable "none"
+   (top)
+)
+
+(defwindow music
+  :monitor 0
+  :geometry (geometry
+              :x 0
+              :y -50
+              :width "300px"
+              :anchor "bottom right"
+              :height "300px")
+  :stacking "fg"
+  :focusable true
+  :wm-ignore true
+  :windowtype "normal"
+  :exclusive false
+  :focusable "none"
+ (music)
+)
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+              :x 0
+              :y 40
+              :width "300px"
+              :anchor "top center"
+              :height "200px")
+  :stacking "fg"
+  :focusable true
+  :wm-ignore true
+  :windowtype "normal"
+  :exclusive false
+  :focusable "none"
+ (calendarbox)
+)
+
+(defwindow powermenu
+  :monitor 0
+  :geometry (geometry
+              :x 0
+              :y 40
+              :width "400px"
+              :anchor "top right")
+  :stacking "fg"
+  :focusable true
+  :wm-ignore true
+  :windowtype "normal"
+  :exclusive false
+  :focusable "none"
+ (powermenu)
+)
+
+
+(defwindow closemenu
+  :monitor 0
+  :geometry (geometry
+              :x "0%"
+              :y "0%"
+              :width "105%"
+              :anchor "center center"
+              :height "105%")
+  :stacking "fg"
+  :wm-ignore true
+  :windowtype "dock"
+  :exclusive false
+  :focusable "none"
+  (eventbox :class "menubg" :onclick "./scripts/close-menu.sh ${close} ${EWW_CONFIG_DIR}")
+)
+
+(deflisten foo :initial ""
+  'python3 /home/epsilon/.config/i3/scripts/info-cava.py -f 30 -b 72 -e 384048 -c average')
+(deflisten ws2 :initial "[1,-1,-1,-1,-1,-1,-1,-1,-1,-1]" "../scripts/ewwworkspace.sh")
+(deflisten music-img :initial "" "./scripts/music-img.sh")
+(deflisten window-name :initial "" "./scripts/windowname.sh")
+
+
+(defpoll time :interval "1s" :initial "aaaaa" :run-while time-visible 'date "+%Y年%m月%d日 %A %H:%M:%S"')
+(defpoll music-title :interval "1s" :initial "No Playing" :run-while time-visible "playerctl metadata xesam:title")
+(defpoll music-artist :interval "1s" :initial "unknown" :run-while time-visible "playerctl metadata xesam:artist")
+(defpoll volume :interval "0.1s" :initial "40" :run-while time-visible 'pamixer --get-volume')
+(defpoll brightness :interval "1s" :initial "" :run-while time-visible 'brightnessctl g')
+(defpoll music-status :interval "0.2s" :initial "Paused" :run-while time-visible "playerctl status")
+
+;(defvar volume "40%");
+(defvar close "")
+(defvar menumargin "*{margin-left:1920px;}")
+(defvar workspacescroll "if [ {} = \"up\" ]; then ../w.sh $(($(xdotool get_desktop) - 1)) 5 ; else ../w.sh $(($(xdotool get_desktop) + 1)) 5; fi")
+(defvar img_var "http://p4.music.126.net/zL9k0zRHYMmsgkPCDEQYKg==/109951169522094679.jpg")
+
+
+(include "./widget/menu.yuck")
+(include "./widget/bar.yuck")
+(include "./widget/top.yuck")
+(include "./widget/music.yuck")
+(include "./widget/calendar.yuck")
+(include "./widget/powermenu.yuck")
+(include "./widget/info.yuck")
+(include "./widget/box.yuck")
+
+
+
+
+
+(defvar isopen "false")
+(defwidget foo2 []
+  (box
+    (button :onclick "eww update isopen=${!isopen} -c ${EWW_CONFIG_DIR}"
+      "Click me")
+    (popover :open isopen :direction "right"
+      "popover content")))
+
+
+
+
+

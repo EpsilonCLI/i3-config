@@ -1,0 +1,35 @@
+(defwidget powermenu []
+(box :class "shadow"
+    (box :class "menubox" :spacing 10 :orientation "vertical" :space-evenly false
+    (box
+        (box  :orientation "h"  :spacing 10 :space-evenly false
+            (button :class "box2" :onclick "" (box :spacing 15 :space-evenly false "" (label :text "${round(EWW_BATTERY.total_avg,0)}%")))
+        )
+        (box :space-evenly false :orientation "h" :halign "end" :spacing 10
+            (button :class "block-box" :onclick "./scripts/close-menu.sh ${close} ${EWW_CONFIG_DIR} ; ../scripts/screenshot.sh" "")
+            (button :class "block-box" :onclick "./scripts/close-menu.sh ${close} ${EWW_CONFIG_DIR} ; ../scripts/powermenu.sh" "⏻")
+        )
+    )
+        (box :class "box2" 
+            (box :class "div" :spacing 15 :orientation "vertical" 
+                (box :space-evenly false :spacing 15 "󰕾" (scale 
+                                                            :hexpand true
+                                                            :class "volume-scale"
+                                                            :min 0
+                                                            :max 21
+                                                            :value {floor(volume/5)}
+                                                            :onchange "pamixer --set-volume $((5*{})) && dunstify -r 20 音量 $(({}*5))%"
+                                                            ))
+                (box :space-evenly false :spacing 15 "󰃠" (scale 
+                                                            :hexpand true
+                                                            :class "brightness-scale"
+                                                            :min 2
+                                                            :max 21
+                                                            :value {floor(brightness/2400)}
+                                                            :onchange "brightnessctl s $((5*{}))% && dunstify -r 20 亮度 $(({}*5))%"
+                                                            ))
+            )
+        )
+    )
+)
+)

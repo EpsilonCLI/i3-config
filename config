@@ -1,0 +1,117 @@
+# ~/.config/i3/config
+
+set $mod Mod4
+font pango:DejaVu Sans Mono 8
+
+
+
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
+bindsym $mod+q exec kitty                 
+bindsym $mod+Shift+m exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+r exec rofi -display-drun ""  -show drun -modi drun -show-icons -no-config -theme ~/.config/i3/rofi/appmenu.rasi             
+bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh #scrot ~/图片/截图/截图" $(date +%Y-%m-%d' '%H-%M-%S).png" && dunstify "截图已保存" &
+bindsym $mod+v floating toggle
+bindsym $mod+c kill
+bindsym $mod+e exec nautilus
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+#bindsym $mod+1 workspace $ws1
+bindsym $mod+1 exec --no-startup-id ~/.config/i3/w.sh 0
+bindsym $mod+2 exec --no-startup-id ~/.config/i3/w.sh 1
+bindsym $mod+3 exec --no-startup-id ~/.config/i3/w.sh 2
+bindsym $mod+4 exec --no-startup-id ~/.config/i3/w.sh 3
+bindsym $mod+5 exec --no-startup-id ~/.config/i3/w.sh 4
+bindsym $mod+6 exec --no-startup-id ~/.config/i3/w.sh 5
+bindsym $mod+7 exec --no-startup-id ~/.config/i3/w.sh 6
+bindsym $mod+8 exec --no-startup-id ~/.config/i3/w.sh 7
+bindsym $mod+9 exec --no-startup-id ~/.config/i3/w.sh 8
+bindsym $mod+0 exec --no-startup-id ~/.config/i3/w.sh 9
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+floating_modifier $mod
+bindsym $mod+button1 move
+bindsym $mod+button3 resize
+
+
+default_border pixel 4
+gaps inner 7
+gaps vertical -10
+floating_minimum_size 75 x 50
+floating_maximum_size 1280 x 720
+
+
+exec --no-startup-id env ~/.config/i3/scripts/startewwi3.sh &
+exec --no-startup-id feh --bg-fill '/home/epsilon/.config/i3/wallpaper.jpeg' &
+#exec --no-startup-id nitrogen --restore &
+#exec --no-startup-id nm-applet &
+exec --no-startup-id fcitx5 & 
+exec --no-startup-id dunst -conf ~/.config/i3/dunstrc & 
+#exec --no-startup-id polybar --config=~/.config/i3/polybar.ini &
+#exec --no-startup-id polybar --config=~/.config/i3/polybar-button.ini &
+#exec --no-startup-id polybar --config=~/.config/i3/polybar-w.ini &
+
+exec --no-startup-id picom --config ~/.config/i3/picom.conf &
+#exec --no-startup-id systemctl --user restart xdg-desktop-portal.service
+#exec --no-startup-id ~/miniconda3/bin/python ~/.config/i3/scripts/autotiling
+exec --no-startup-id lxpolkit &
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40% &
+#exec --no-startup-id eww update volume="$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)" -c ~/.config/i3/eww-button &
+
+#exec_always --no-startup-id "systemctl --user import-environment EPSILON_WS_LISTEN"
+#exec_always "set-environment EPSILON_WS_LISTEN /home/epsilon/.config/i3/scripts/ewwworkspace.sh"
+
+
+
+#for_window [title="Picture-in-Picture"] floating enable
+#for_window [class="Gimp"] floating enable
+for_window [class="Photoshop"] border normal
+for_window [class="org.jackhuang.hmcl.Launcher"] floating enable
+
+
+#hide_edge_borders both
+# class                 border  bground text    indicator child_border
+client.focused          #15a6f0   #15a6f0   #FFFFFF 
+#client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #828282   #828282   #888888 
+#client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+#client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #000000
+
+
+
+
+

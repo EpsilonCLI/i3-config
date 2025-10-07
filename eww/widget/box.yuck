@@ -1,0 +1,8 @@
+(defwidget abox [?text ?onclick ?class ?limit-width]
+    (button
+        :onclick {onclick}
+        :class {class}
+        
+        (box {text})
+    )
+)

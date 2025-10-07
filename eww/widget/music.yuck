@@ -1,0 +1,24 @@
+(defwidget music []
+(box :class "shadow"
+
+(box :class "music1"
+  (overlay 
+    (box :style "border-radius: 20px;"
+  (image
+    :style "background-image: url('${music-img}'); " 
+ )
+)
+ (box :orientation "v" 
+ (box)(box)
+ (box 
+   (button  :onclick "playerctl previous" (box(label :text "󰒫")))
+   (button  :onclick "playerctl play-pause" (box(label :text  {music-status == "Playing" ? "󰏤" : "󰐊"} )))
+   (button  :onclick "playerctl next" (box(label :text "󰒬")))
+ )
+)
+  )
+)
+)
+)
+
+

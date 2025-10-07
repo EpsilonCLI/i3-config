@@ -1,0 +1,1 @@
+eww open closemenu -c $2 && eww open $1 -c $2 && eww update close=$1 -c $2 &

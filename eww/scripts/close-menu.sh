@@ -1,0 +1,1 @@
+eww close closemenu -c $2 && eww close $1 -c $2 &

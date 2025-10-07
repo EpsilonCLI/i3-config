@@ -1,0 +1,248 @@
+//$bg:rgba(245,247,250,0.7);
+//$bg2:rgba(245,247,250,1.0);
+//$fg:rgba(56,64,72,1.0);
+//$fg2:rgba(56,64,72,0.6);
+
+//@import "nord.scss";
+
+$bg:rgba(245,247,250,0.7);
+$bg2:#e4e8ee;
+$fg:#123354;
+$fg2:#1e2529;
+$mbg:#fcfcfc;
+$mfg:#232629;
+
+
+
+$radius:5px;
+$hover:rgba(10,14,18,0.3);
+$hover2:#eff0f1;
+$shadow:0px 0px 6px 0px rgba(0,0,0,0.8);
+
+*{
+  all: unset;
+  background-color: transparent;
+  color: $fg;
+  font-size: 20px;
+}
+
+
+
+menu {
+  //@extend .menubox;
+  background-color: $bg2;
+  padding: 5px;
+  menuitem {
+    border-radius: $radius;
+    padding: 2px 2px;
+    //background-color: $bg2;
+    margin: 2px;
+  }
+
+  menuitem arrow {
+    min-width: 16px;
+    min-height: 8px;
+    background-color: $fg2;
+    border-radius: $radius;
+  }
+
+  menuitem:hover {
+    background-color: $hover;
+  }
+}
+
+tooltip {
+  background-color: $bg2;
+  //border-radius: $radius;
+}
+
+calendar {
+  
+  &:hover {
+    background-color: $hover;
+  }
+  &:selected {
+    background-color: $hover;
+  }
+  //.other-month {
+   // color: $bg3;
+  //}
+}
+
+calendar.highlight {
+  color: $fg2;
+}
+
+scale trough highlight {
+  background-color: #a3be8c;
+  border-radius: $radius;
+}
+
+scale trough {
+  background-color: $bg;
+  border-radius: $radius;
+  min-height: 20px;
+  //min-width: 50px;
+}
+
+.brightness-scale trough highlight {
+  background-color: #ebcb8b;
+}
+
+.bg {
+  background-color: $bg;
+  padding: 0px 10px;
+}
+
+
+.box {
+  all: unset;
+  padding: 5px 0;
+  > box {
+    @extend .box2;
+    //padding: 0 10px;
+  }
+  &:hover {
+    > box {
+      background-color: $hover
+    }
+  }
+}
+
+.box2 {
+  //background-color: $bg2;
+  border-radius: $radius;
+  padding:0 10px;
+}
+
+.block-box {
+  @extend .box2;
+  padding: 0;
+  min-height: 40px;
+  min-width: 40px;
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+.div {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+
+.top-box {
+  min-width: 90px;
+}
+
+.icon {
+  min-width: 45px;
+  border-radius: $radius;
+  &:hover {
+    background-color: $hover;
+  }
+  label {
+    font-size: 30px;
+    font-family: "iosevka";
+  }
+}
+
+.shadow {
+  border: 10px solid transparent;
+  > *{
+    box-shadow: $shadow; 
+  }
+}
+
+.shadow-top {
+  border-bottom: 10px solid transparent;
+  > box {
+    box-shadow: $shadow; 
+  }
+}
+
+.shadow-down {
+  border-top: 10px solid transparent;
+  > box {
+    box-shadow: $shadow; 
+  }
+}
+
+.music1 {
+  background-color: $bg2;
+  border-radius: $radius*2;
+  //border: 2px solid $fg;
+  padding: 10px;
+  //margin: 5px 0;
+  image {
+    border-radius: $radius;
+    background-size: cover;
+    //min-width: 300px;
+    //min-height: 300px;
+  }
+  button {
+    border-radius: $radius;
+    //padding-top: 200px;
+    //background-color: $bg2;
+    > box {
+      background-color: $bg2;
+      border-radius: $radius;
+      margin: 10px;
+    }
+  }
+  button:hover {
+    
+    label {
+      background-color: $hover;
+      color: $mfg;
+    }
+  }
+  label {
+    font-size: 40px;
+    color: $fg;
+    border-radius: $radius;
+  }
+}
+
+.menubox {
+  background-color: $bg2;
+  color: $mfg;
+  border-radius: $radius*2;
+  //border: 2px solid $fg;
+  padding: 10px;
+  *{
+    color: $mfg;
+  }
+}
+
+.workspace {
+  //background-color: $bg2;
+  border-radius: $radius;
+  margin: 5px 0;
+  padding: 8px 10px 8px 0;
+  box {
+    transition-property: all;
+    transition-duration: 0.1s;
+    border-radius: 2px;
+  }
+}
+
+.w0 {
+  margin-left: 10px;
+  min-width: 12px;
+  background-color: #6f828a;
+}
+
+.w1 {
+  margin-left: 10px;
+  min-width: 60px;
+  background-color: $fg;
+}
+
+.w-1 {
+  margin-left: 0px;
+  min-width: 0px;
+  background-color: transparent;
+}
+
+

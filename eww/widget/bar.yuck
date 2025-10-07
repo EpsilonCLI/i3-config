@@ -1,0 +1,73 @@
+(defwidget bar []
+(box :class "shadow-down"
+  (box
+    (overlay
+    (eventbox :class "" :onscroll workspacescroll)
+    (box
+      :class "bg"
+      :orientation "h"
+      :space-evenly true
+     
+      (box
+        :class "box"
+        :halign "start"
+        :spacing 0
+        (box
+        (button :class "icon"  :onclick "rofi -display-drun \"\"  -show drun -modi drun -show-icons -no-config -theme ~/.config/i3/rofi/appmenu.rasi";"eww open-many closemenu menu --config ~/.config/i3/eww-button ";
+          (label
+            ;:text "";
+            :text ""
+          )
+        )
+        (button :class "icon" :onclick "cd ~ && kitty &"
+          (label
+            :text ""
+          )
+        )
+        (button :class "icon" :onclick "firefox &"
+          (label
+            :text ""
+          )
+        )
+        (button :class "icon" :onclick "nautilus &"
+          (label
+            :text ""
+          )
+        )
+        (button :class "icon" :onclick "cd ~ && /home/epsilon/dsh/hmcl.sh"
+          (label
+            :text "󰍳"
+          )
+        )
+      ))
+    
+    (box
+        :spacing 10
+        :orientation "h"
+        :space-evenly false
+        :halign "end"
+      
+
+      (button :class "box" :halign "end" :onclick "./scripts/open-menu.sh music ${EWW_CONFIG_DIR}"
+      (box
+        (label :text {music-artist + " - " + music-title} :limit-width 30)
+      )
+      )
+      
+    )
+)
+    (box
+      :space-evenly false
+      :halign "center"
+      :class "box"
+      (label
+        :class "box2"
+        :text foo
+        :style "font-family: iosevka;font-size: 28px;"
+      )
+    )
+    
+    )
+  )
+)
+)

@@ -1,0 +1,4 @@
+(defwidget info []
+    (box :class "menubox"
+  )
+  )

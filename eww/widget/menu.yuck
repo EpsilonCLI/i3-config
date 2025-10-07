@@ -1,0 +1,19 @@
+(defwidget menu []
+    (box
+      :space-evenly false
+      :class "bg"
+      :spacing 10
+      :orientation "v"
+    (box :class "div" :orientation "v"
+      (box :spacing 20 :space-evenly false (label :text "󰕾")(scale :hexpand true :class "slider" :min 0 :max 21 :value 8 :onchange "pamixer --set-volume $(({}*5))"))
+      (box :spacing 20 :space-evenly false (label :text "󰃠")(scale :hexpand true :class "slider" :min 2 :max 11 :value 10 :onchange "brightnessctl set $(({}*10))%" :css "* trough highlight{background: #00aaff;}"))
+    )
+    (box :class "div" :orientation "v")
+    (box :class "div" :orientation "v")
+    (box :class "div" :orientation "v" :vexpand true)
+    (box :class "div-powermenu" :orientation "h" :spacing 20
+    (image :path "" :image-width 500 :image-height 500)
+    )
+    )
+    
+)

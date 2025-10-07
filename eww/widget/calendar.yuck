@@ -1,0 +1,13 @@
+(defwidget calendarbox []
+(box :class "shadow"
+    (box :class "menubox" :space-evenly true :spacing 10
+      (calendar
+        :class "box2"
+        :show-details true
+        :show-heading true
+        :show-day-names true
+        :show-week-numbers false
+      )
+    )
+    )
+  )
